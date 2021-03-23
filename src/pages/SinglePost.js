@@ -62,6 +62,7 @@ const SinglePost = (props) => {
         username,
         body,
         createdAt,
+        userAvatar,
         commentCount,
         likeCount,
         likes,
@@ -72,12 +73,7 @@ const SinglePost = (props) => {
       <Grid>
         <Grid.Row>
           <Grid.Column width={2}>
-            <Image
-              floated="right"
-              size="big"
-              src="https://react.semantic-ui.com/images/avatar/large/molly.png"
-              circular
-            />
+            <Image floated="right" size="big" src={userAvatar} circular />
           </Grid.Column>
           <Grid.Column width={12}>
             <Card fluid>
@@ -126,14 +122,14 @@ const SinglePost = (props) => {
 
               {comments.map((comment) => (
                 <Comment key={comment.id}>
-                  <Comment.Avatar src="https://react.semantic-ui.com/images/avatar/small/matt.jpg" />
+                  <Comment.Avatar src={comment.userAvatar} />
                   <Comment.Content>
                     {user && user.username === comment.username && (
                       <DeleteButton postId={id} commentId={comment.id} />
                     )}
                     <Comment.Author as="a">{comment.username}</Comment.Author>
                     <Comment.Metadata>
-                      <div>{moment(createdAt).fromNow()}</div>
+                      <div>{moment(comment.createdAt).fromNow()}</div>
                     </Comment.Metadata>
                     <Comment.Text>{comment.body}</Comment.Text>
                   </Comment.Content>

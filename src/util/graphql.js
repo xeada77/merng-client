@@ -9,6 +9,7 @@ export const FETCH_POSTS_QUERY = gql`
       createdAt
       commentCount
       likeCount
+      userAvatar
       comments {
         id
         username
@@ -45,6 +46,7 @@ export const FETCH_POST_QUERY = gql`
       body
       username
       createdAt
+      userAvatar
       likeCount
       commentCount
       comments {
@@ -52,6 +54,7 @@ export const FETCH_POST_QUERY = gql`
         username
         createdAt
         body
+        userAvatar
       }
       likes {
         id
@@ -100,6 +103,7 @@ export const CREATE_COMMENT_MUTATION = gql`
         username
         createdAt
         body
+        userAvatar
       }
     }
   }

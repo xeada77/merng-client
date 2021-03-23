@@ -11,7 +11,6 @@ import {
   Header,
   Dimmer,
   Loader,
-  Divider,
 } from "semantic-ui-react";
 import { FETCH_POSTS_QUERY } from "../util/graphql";
 
@@ -29,7 +28,9 @@ function Home() {
           data.getPosts.filter((post) => post.username !== user.username)
         );
         setMyPosts(
-          data.getPosts.filter((post) => post.username === user.username)
+          data.getPosts
+            .filter((post) => post.username === user.username)
+            .slice(0, 5)
         );
       } else {
         setMyPosts([]);
@@ -46,14 +47,17 @@ function Home() {
     );
 
   return (
-    <Grid columns={3}>
+    <Grid columns={3} stackable={true}>
       {user && (
         <>
           <Grid.Row>
             <Container textAlign="center" className="encabezado">
-              <Header size="huge">Mis Posts</Header>
+              <Header size="huge" dividing color="teal">
+                Mis Posts
+              </Header>
             </Container>
-
+          </Grid.Row>
+          <Grid.Row>
             <Grid.Column>
               <PostForm />
             </Grid.Column>
@@ -66,14 +70,17 @@ function Home() {
               ))}
             </Transition.Group>
           </Grid.Row>
-          <Divider />
         </>
       )}
 
       <Grid.Row>
         <Container textAlign="center" className="encabezado">
-          <Header size="huge">Post Recientes</Header>
+          <Header size="huge" dividing color="teal">
+            Post Recientes
+          </Header>
         </Container>
+      </Grid.Row>
+      <Grid.Row>
         <Transition.Group>
           {recentPosts.map((post) => (
             <Grid.Column key={post.id} style={{ marginBottom: 20 }}>

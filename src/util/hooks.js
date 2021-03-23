@@ -8,8 +8,8 @@ export const useForm = (callback, initialState) => {
     callback();
   };
 
-  const onChange = (event) => {
-    setValues({ ...values, [event.target.name]: event.target.value });
+  const onChange = (event, { name, value }) => {
+    setValues({ ...values, [name]: value });
   };
 
   return {

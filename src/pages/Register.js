@@ -16,7 +16,41 @@ const Register = (props) => {
     email: "",
     password: "",
     confirmPassword: "",
+    avatar: "",
   };
+
+  const options = [
+    {
+      name: "avatar",
+      key: "av1",
+      text: "Avatar1",
+      value: "https://react.semantic-ui.com/images/avatar/large/molly.png",
+    },
+    {
+      name: "avatar",
+      key: "av2",
+      text: "Avatar2",
+      value: "https://react.semantic-ui.com/images/avatar/large/matthew.png",
+    },
+    {
+      name: "avatar",
+      key: "av3",
+      text: "Avatar3",
+      value: "https://react.semantic-ui.com/images/avatar/large/elliot.jpg",
+    },
+    {
+      name: "avatar",
+      key: "av4",
+      text: "Avatar4",
+      value: "https://react.semantic-ui.com/images/avatar/large/jenny.jpg",
+    },
+    {
+      name: "avatar",
+      key: "av5",
+      text: "Avatar5",
+      value: "https://react.semantic-ui.com/images/avatar/large/steve.jpg",
+    },
+  ];
 
   const { onSubmit, onChange, values } = useForm(register, initialState);
 
@@ -77,6 +111,30 @@ const Register = (props) => {
           error={errors.confirmPassword ? true : false}
           onChange={onChange}
         />
+        {/* <Form.Select
+          label="Avatar"
+          //options={options}
+          name="avatar"
+          placeholder="Escoge un avatar."
+          value={values.avatar}
+          onChange={onChange}
+        >
+          <>
+            {options.map((option) => (
+              <option value={option.value}>{option.text}</option>
+            ))}
+          </>
+        </Form.Select> */}
+        <Form.Select
+          label="Avatar"
+          placeholder="Select Avatar"
+          fluid
+          selection
+          options={options}
+          onChange={onChange}
+          name="avatar"
+          value={values.avatar}
+        />
         <Button type="submit" primary>
           Register
         </Button>
@@ -100,6 +158,7 @@ const REGISTER_USER = gql`
     $email: String!
     $password: String!
     $confirmPassword: String!
+    $avatar: String!
   ) {
     register(
       registerInput: {
@@ -107,6 +166,7 @@ const REGISTER_USER = gql`
         email: $email
         password: $password
         confirmPassword: $confirmPassword
+        avatar: $avatar
       }
     ) {
       id
