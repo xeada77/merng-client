@@ -25,30 +25,50 @@ const Register = (props) => {
       key: "av1",
       text: "Avatar1",
       value: "https://react.semantic-ui.com/images/avatar/large/molly.png",
+      image: {
+        avatar: true,
+        src: "https://react.semantic-ui.com/images/avatar/small/molly.png",
+      },
     },
     {
       name: "avatar",
       key: "av2",
       text: "Avatar2",
       value: "https://react.semantic-ui.com/images/avatar/large/matthew.png",
+      image: {
+        avatar: true,
+        src: "https://react.semantic-ui.com/images/avatar/small/matthew.png",
+      },
     },
     {
       name: "avatar",
       key: "av3",
       text: "Avatar3",
       value: "https://react.semantic-ui.com/images/avatar/large/elliot.jpg",
+      image: {
+        avatar: true,
+        src: "https://react.semantic-ui.com/images/avatar/small/elliot.jpg",
+      },
     },
     {
       name: "avatar",
       key: "av4",
       text: "Avatar4",
       value: "https://react.semantic-ui.com/images/avatar/large/jenny.jpg",
+      image: {
+        avatar: true,
+        src: "https://react.semantic-ui.com/images/avatar/small/jenny.jpg",
+      },
     },
     {
       name: "avatar",
       key: "av5",
       text: "Avatar5",
       value: "https://react.semantic-ui.com/images/avatar/large/steve.jpg",
+      image: {
+        avatar: true,
+        src: "https://react.semantic-ui.com/images/avatar/small/steve.jpg",
+      },
     },
   ];
 
@@ -127,7 +147,7 @@ const Register = (props) => {
         </Form.Select> */}
         <Form.Select
           label="Avatar"
-          placeholder="Select Avatar"
+          placeholder="Selecciona un avatar"
           fluid
           selection
           options={options}
