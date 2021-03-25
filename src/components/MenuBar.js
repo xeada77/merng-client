@@ -19,7 +19,9 @@ const MenuBar = () => {
     <Menu pointing secondary size="massive" color="teal">
       <Menu.Item name={user.username} active as={Link} to="/" />
       <Menu.Menu position="right">
-        <Menu.Item name="logout" onClick={logout} />
+        <Menu.Item name="logout" onClick={logout}>
+          Salir
+        </Menu.Item>
       </Menu.Menu>
     </Menu>
   ) : (
@@ -30,7 +32,9 @@ const MenuBar = () => {
         onClick={handleItemClick}
         as={Link}
         to="/"
-      />
+      >
+        Inicio
+      </Menu.Item>
 
       <Menu.Menu position="right">
         <Menu.Item
@@ -46,7 +50,9 @@ const MenuBar = () => {
           onClick={handleItemClick}
           as={Link}
           to="/register"
-        />
+        >
+          Registro
+        </Menu.Item>
       </Menu.Menu>
     </Menu>
   );

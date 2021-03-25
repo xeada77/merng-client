@@ -1,10 +1,12 @@
 import React, { useContext, useState } from "react";
-import { useMutation, gql } from "@apollo/client";
+import { useMutation } from "@apollo/client";
 
 import { Form, Button, Container, Header } from "semantic-ui-react";
 
+import { REGISTER_USER } from "../util/graphql";
 import { AuthContext } from "../context/auth";
 import { useForm } from "../util/hooks";
+import { options } from "../util/avatar";
 
 const Register = (props) => {
   const context = useContext(AuthContext);
@@ -18,59 +20,6 @@ const Register = (props) => {
     confirmPassword: "",
     avatar: "",
   };
-
-  const options = [
-    {
-      name: "avatar",
-      key: "av1",
-      text: "Avatar1",
-      value: "https://react.semantic-ui.com/images/avatar/large/molly.png",
-      image: {
-        avatar: true,
-        src: "https://react.semantic-ui.com/images/avatar/small/molly.png",
-      },
-    },
-    {
-      name: "avatar",
-      key: "av2",
-      text: "Avatar2",
-      value: "https://react.semantic-ui.com/images/avatar/large/matthew.png",
-      image: {
-        avatar: true,
-        src: "https://react.semantic-ui.com/images/avatar/small/matthew.png",
-      },
-    },
-    {
-      name: "avatar",
-      key: "av3",
-      text: "Avatar3",
-      value: "https://react.semantic-ui.com/images/avatar/large/elliot.jpg",
-      image: {
-        avatar: true,
-        src: "https://react.semantic-ui.com/images/avatar/small/elliot.jpg",
-      },
-    },
-    {
-      name: "avatar",
-      key: "av4",
-      text: "Avatar4",
-      value: "https://react.semantic-ui.com/images/avatar/large/jenny.jpg",
-      image: {
-        avatar: true,
-        src: "https://react.semantic-ui.com/images/avatar/small/jenny.jpg",
-      },
-    },
-    {
-      name: "avatar",
-      key: "av5",
-      text: "Avatar5",
-      value: "https://react.semantic-ui.com/images/avatar/large/steve.jpg",
-      image: {
-        avatar: true,
-        src: "https://react.semantic-ui.com/images/avatar/small/steve.jpg",
-      },
-    },
-  ];
 
   const { onSubmit, onChange, values } = useForm(register, initialState);
 
@@ -131,20 +80,6 @@ const Register = (props) => {
           error={errors.confirmPassword ? true : false}
           onChange={onChange}
         />
-        {/* <Form.Select
-          label="Avatar"
-          //options={options}
-          name="avatar"
-          placeholder="Escoge un avatar."
-          value={values.avatar}
-          onChange={onChange}
-        >
-          <>
-            {options.map((option) => (
-              <option value={option.value}>{option.text}</option>
-            ))}
-          </>
-        </Form.Select> */}
         <Form.Select
           label="Avatar"
           placeholder="Selecciona un avatar"
@@ -171,31 +106,5 @@ const Register = (props) => {
     </div>
   );
 };
-
-const REGISTER_USER = gql`
-  mutation register(
-    $username: String!
-    $email: String!
-    $password: String!
-    $confirmPassword: String!
-    $avatar: String!
-  ) {
-    register(
-      registerInput: {
-        username: $username
-        email: $email
-        password: $password
-        confirmPassword: $confirmPassword
-        avatar: $avatar
-      }
-    ) {
-      id
-      email
-      username
-      createdAt
-      token
-    }
-  }
-`;
 
 export default Register;
